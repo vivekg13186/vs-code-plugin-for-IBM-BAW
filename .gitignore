@@ -1,0 +1,4 @@
+node_modules
+.vscode-test/
+*.vsix
+ui/src/instance.js
