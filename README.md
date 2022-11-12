@@ -50,12 +50,8 @@ This is a visual studio code plugin for IBM BAW.
 - Start typing the text this will auto fitler the tree content this is a default VS code feature.
 
 
-  
 ## License
 Copyright (c) 2023 Saola Software Solutions Private Limited.
-
-[Home]: http://www.saolasoftwaresolutions.com
-
-[Docs]: http://www.saolasoftwaresolutions.com
-
-[Video]: https://www.youtube.com/channel/UCNsKBttxhmJGf-LvWBX_G2A/featured
+ - [Home]: http://www.saolasoftwaresolutions.com
+ - [Docs]: http://www.saolasoftwaresolutions.com
+ - [Video]: https://www.youtube.com/channel/UCNsKBttxhmJGf-LvWBX_G2A/featured
