@@ -52,6 +52,6 @@ This is a visual studio code plugin for IBM BAW.
 
 ## License
 Copyright (c) 2023 Saola Software Solutions Private Limited.
- - [Home]:http://www.saolasoftwaresolutions.com
- - [Docs]:http://www.saolasoftwaresolutions.com
- - [Video]:https://www.youtube.com/channel/UCNsKBttxhmJGf-LvWBX_G2A/featured
+ - [Home website](http://www.saolasoftwaresolutions.com)
+ - [Documentation page](http://www.saolasoftwaresolutions.com)
+ - [Youtube tutorial video](https://www.youtube.com/channel/UCNsKBttxhmJGf-LvWBX_G2A/featured)
