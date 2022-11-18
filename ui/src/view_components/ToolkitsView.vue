@@ -11,8 +11,8 @@ var toTreeNode = function(d){
     o.name = `${d.projectName} (${d.snapshotName})`;
     o.value ="";
     o._children =null;
-    if(d.projectDep  && d.projectDeps.length>0){
-        o._children = d.projectDep.map(toTreeNode);
+    if(d.projDeps  && d.projDeps.length>0){
+        o._children = d.projDeps.map(toTreeNode);
     }
     return o;
 }
@@ -26,6 +26,7 @@ export default{
         }
     },
     mounted(){
+        
         this.tableData.splice(0,0,...this.toolkits.map(toTreeNode));
         this.tabulator =  new Tabulator(this.$refs.table,{
             data : this.tableData,
