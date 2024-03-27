@@ -68,15 +68,7 @@
 				"title": "Archive snapshot",
 				"category": "BAW"
 			},
-			 
-			{
-				"command": "baw.app.support.tree.reload",
-				"title": "Refresh",
-				"icon": {
-					"light": "media/light/refresh.svg",
-					"dark": "media/dark/refresh.svg"
-				}
-			},
+		
 			{
 				"command": "baw.app.support.view.instance",
 				"title": "View Process Instance Details",
@@ -84,6 +76,14 @@
 				"icon": {
 					"light": "media/light/search.svg",
 					"dark": "media/dark/search.svg"
+				}
+			},
+			{
+				"command": "baw.app.support.tree.reload",
+				"title": "Refresh",
+				"icon": {
+					"light": "media/light/refresh.svg",
+					"dark": "media/dark/refresh.svg"
 				}
 			},
 			{
@@ -112,18 +112,14 @@
 			"activitybar": [
 				{
 					"id": "baw-explorer",
-					"icon": "media/vm.svg",
+					"icon":"media/dark/bpm.svg",
 					"title": "BAW Explorer"
 				}
 			]
 		},
 		"menus": {
 			"view/title": [
-				{
-					"command": "baw.app.support.tree.reload",
-					"when": "view == appsexplorer",
-					"group": "navigation"
-				},
+				
 				{
 					"command": "baw.app.support.new.env",
 					"when": "view == appsexplorer",
@@ -136,6 +132,10 @@
 				},
 				{
 					"command": "baw.app.support.delete.env",
+					"when": "view == appsexplorer",
+					"group": "navigation"
+				},{
+					"command": "baw.app.support.tree.reload",
 					"when": "view == appsexplorer",
 					"group": "navigation"
 				}
