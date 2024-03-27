@@ -1,4 +1,4 @@
-const { deleteConnection, updateConnection, deleteAllConnections } = require('./storage');
+const { deleteConnection, updateConnection, deleteAllConnections,getConnections } = require('./storage');
 
 const vscode = require('vscode');
 
@@ -78,7 +78,13 @@ exports.registerAddNewConnection = function registerAddNewConnection (id, contex
 
 exports.registerDeleteConnection = function registerDeleteConnection (id, context, treeDataProvider) {
     var plugin = vscode.commands.registerCommand(id, async function () {
-        var connectionName = getSelectedText();
+        var connectionList = await getConnections(context);
+        connectionList= connectionList.map(function(con){
+            return con.connectionName;
+        });
+        var connectionName =await vscode.window.showQuickPick(connectionList);
+
+        //var connectionName = getSelectedText();
         if (connectionName.trim()) {
             await deleteConnection(context, connectionName);
         }
