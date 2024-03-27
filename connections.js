@@ -1,7 +1,8 @@
-const { deleteConnection, updateConnection, deleteAllConnections } =require( './storage');
+const { deleteConnection, updateConnection, deleteAllConnections } = require('./storage');
 
 const vscode = require('vscode');
 
+//returns current text in editor
 function getSelectedText () {
     const editor = vscode.window.activeTextEditor;
     if (!editor) return "";
@@ -10,14 +11,47 @@ function getSelectedText () {
     const selection = editor.selection;
     if (!document || !selection) return "";
     const text = document.getText(selection);
-    return text ||"";
+    return text || "";
 }
-exports.registerAddNewConnection =  function registerAddNewConnection (id, context, treeDataProvider) {
+function isValidHttpUrl (string) {
+    let url;
+
+    try {
+        url = new URL(string);
+    } catch (_) {
+        return false;
+    }
+
+    return url.protocol === "http:" || url.protocol === "https:";
+}
+
+exports.registerAddNewConnection = function registerAddNewConnection (id, context, treeDataProvider) {
 
     var plugin = vscode.commands.registerCommand(id, async function () {
 
+        var host = await vscode.window.showInputBox({ placeHolder: "http://localhost:8080", title: "Enter host url" });
+        if (!isValidHttpUrl(host)) {
+            vscode.window.showErrorMessage("Enter BAW enviroment url");
+            return;
+        }
+        var username = await vscode.window.showInputBox({ placeHolder: "user1", title: "Enter user name" });
+        if (!username) {
+            vscode.window.showErrorMessage("Enter username");
+            return
+        }
+        var password = await vscode.window.showInputBox({ placeHolder: "password", password: true, title: "Enter password" });
+        if (!password) {
+            vscode.window.showErrorMessage("Enter password");
+            return
+        }
+        var connectionName = await vscode.window.showInputBox({ placeHolder: "DEV1", title: "Enter connection name" });
+        if (!connectionName) {
+            vscode.window.showErrorMessage("Enter connection name");
+            return
+        }
 
-        var data = getSelectedText().split("\n");
+
+        /*var data = getSelectedText().split("\n");
         if (data.length < 2) {
             vscode.window.showErrorMessage("Unexpected input.Requires 'Connection name','Host','Username','Password'");
             return;
@@ -33,8 +67,8 @@ exports.registerAddNewConnection =  function registerAddNewConnection (id, conte
         if (!connectionName || !host || !username || !password) {
             vscode.window.showErrorMessage("Unexpected input.Requires 'Connection name','Host','Username','Password'");
             return;
-        }
-       await updateConnection(context, connectionName, host, username, password);
+        }*/
+        await updateConnection(context, connectionName, host, username, password);
         vscode.window.showInformationMessage(`${connectionName} added`);
         treeDataProvider.refresh();
     });
@@ -42,11 +76,11 @@ exports.registerAddNewConnection =  function registerAddNewConnection (id, conte
 }
 
 
-exports.registerDeleteConnection=  function registerDeleteConnection (id, context,treeDataProvider) {
+exports.registerDeleteConnection = function registerDeleteConnection (id, context, treeDataProvider) {
     var plugin = vscode.commands.registerCommand(id, async function () {
         var connectionName = getSelectedText();
-        if(connectionName.trim()){
-           await deleteConnection(context,connectionName);
+        if (connectionName.trim()) {
+            await deleteConnection(context, connectionName);
         }
         vscode.window.showInformationMessage(`${connectionName} removed`);
         treeDataProvider.refresh();
@@ -55,7 +89,7 @@ exports.registerDeleteConnection=  function registerDeleteConnection (id, contex
 
 }
 
-exports.registerDeleteAllConnections =   function registerDeleteConnection (id, context, treeDataProvider) {
+exports.registerDeleteAllConnections = function registerDeleteConnection (id, context, treeDataProvider) {
     var plugin = vscode.commands.registerCommand(id, async function () {
         await deleteAllConnections(context);
         vscode.window.showInformationMessage(`all environments removed`);

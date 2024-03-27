@@ -28,7 +28,11 @@
 			{
 				"command": "baw.app.support.new.env",
 				"title": "Add new environment",
-				"category": "BAW"
+				"category": "BAW",
+				"icon": {
+					"light": "media/light/plus.svg",
+					"dark": "media/dark/plus.svg"
+				}
 			},
 			{
 				"command": "baw.app.support.delete.env",
@@ -72,7 +76,11 @@
 			{
 				"command": "baw.app.support.view.instance",
 				"title": "View Process Instance Details",
-				"category": "BAW"
+				"category": "BAW",
+				"icon": {
+					"light": "media/light/search.svg",
+					"dark": "media/dark/search.svg"
+				}
 			},
 			{
 				"command": "baw.app.support.view.orphan",
@@ -111,7 +119,19 @@
 					"command": "baw.app.support.tree.reload",
 					"when": "view == appsexplorer",
 					"group": "navigation"
+				},
+				{
+					"command": "baw.app.support.new.env",
+					"when": "view == appsexplorer",
+					"group": "navigation"
+				},
+				{
+					"command": "baw.app.support.view.instance",
+					"when": "view == appsexplorer",
+					"group": "navigation"
 				}
+				
+				
 				 
 			],
 			"view/item/context": [
