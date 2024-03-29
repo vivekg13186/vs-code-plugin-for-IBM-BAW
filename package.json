@@ -1,199 +1,200 @@
 {
-	"name": "baw-app-support",
-	"displayName": "baw_app_support",
-	"publisher": "vivekopd",
-	"repository": {
-		"url": "https://github.com/vivekg13186/vs-code-plugin-for-IBM-BAW.git"
-	},
-	"description": "Plugin to view,compare and manage BAW applications,snapshots,configuration",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.70.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"*"
-	],
-	"main": "./extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "baw.app.support.view.config",
-				"title": "View configuration",
-				"category": "BAW"
-			},
-			{
-				"command": "baw.app.support.compare.config",
-				"title": "Compare configuration",
-				"category": "BAW"
-			},
-			{
-				"command": "baw.app.support.new.env",
-				"title": "Add new environment",
-				"category": "BAW",
-				"icon": {
-					"light": "media/light/plus.svg",
-					"dark": "media/dark/plus.svg"
-				}
-			},
-			{
-				"command": "baw.app.support.delete.env",
-				"title": "Remove environment",
-				"category": "BAW",
-				"icon": {
-					"light": "media/light/trash.svg",
-					"dark": "media/dark/trash.svg"
-				}
-			},
-			{
-				"command": "baw.app.support.delete.all.env",
-				"title": "Remove all environments",
-				"category": "BAW"
-			},
-			{
-				"command": "baw.app.support.make.default",
-				"title": "Make snapshot default",
-				"category": "BAW"
-			},
-			{
-				"command": "baw.app.support.make.active",
-				"title": "Make snapshot active",
-				"category": "BAW"
-			},
-			{
-				"command": "baw.app.support.deactive",
-				"title": "Deactivate snapshot",
-				"category": "BAW"
-			},
-			{
-				"command": "baw.app.support.archive",
-				"title": "Archive snapshot",
-				"category": "BAW"
-			},
-			{
-				"command": "baw.app.support.view.instance",
-				"title": "View Process Instance Details",
-				"category": "BAW",
-				"icon": {
-					"light": "media/light/search.svg",
-					"dark": "media/dark/search.svg"
-				}
-			},
-			{
-				"command": "baw.app.support.tree.reload",
-				"title": "Refresh",
-				"icon": {
-					"light": "media/light/refresh.svg",
-					"dark": "media/dark/refresh.svg"
-				}
-			},
-			{
-				"command": "baw.app.support.view.orphan",
-				"title": "View orphan snapshots",
-				"category": "BAW"
-			}
-		],
-		"views": {
-			"baw-explorer": [
-				{
-					"id": "appsexplorer",
-					"name": "Apps Explorer",
-					"icon": "media/hippo.svg",
-					"contextualTitle": "BAW Environments"
-				},
-				{
-					"id": "orphantkexplorer",
-					"name": "Orphaned Tookits",
-					"icon": "media/hippo.svg",
-					"contextualTitle": "BAW Environments"
-				}
-			]
-		},
-		"viewsContainers": {
-			"activitybar": [
-				{
-					"id": "baw-explorer",
-					"icon": "media/dark/hippo.svg",
-					"title": "BAW Explorer"
-				}
-			]
-		},
-		"menus": {
-			"view/title": [
-				{
-					"command": "baw.app.support.new.env",
-					"when": "view == appsexplorer",
-					"group": "navigation"
-				},
-				{
-					"command": "baw.app.support.view.instance",
-					"when": "view == appsexplorer",
-					"group": "navigation"
-				},
-				{
-					"command": "baw.app.support.delete.env",
-					"when": "view == appsexplorer",
-					"group": "navigation"
-				},
-				{
-					"command": "baw.app.support.tree.reload",
-					"when": "view == appsexplorer",
-					"group": "navigation"
-				}
-			],
-			"view/item/context": [
-				{
-					"command": "baw.app.support.view.orphan",
-					"when": "view == appsexplorer && viewItem == app"
-				},
-				{
-					"command": "baw.app.support.view.config",
-					"when": "view == appsexplorer && viewItem == snapshot"
-				},
-				{
-					"command": "baw.app.support.compare.config",
-					"when": "view == appsexplorer && viewItem == snapshot && listDoubleSelection"
-				},
-				{
-					"command": "baw.app.support.make.default",
-					"when": "view == appsexplorer && viewItem == snapshot"
-				},
-				{
-					"command": "baw.app.support.make.active",
-					"when": "view == appsexplorer && viewItem == snapshot"
-				},
-				{
-					"command": "baw.app.support.archive",
-					"when": "view == appsexplorer && viewItem == snapshot"
-				},
-				{
-					"command": "baw.app.support.deactive",
-					"when": "view == appsexplorer && viewItem == snapshot"
-				}
-			]
-		}
-	},
-	"scripts": {
-		"lint": "eslint .",
-		"pretest": "npm run lint",
-		"test": "node ./test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.2.0",
-		"@types/mocha": "^9.1.1",
-		"@types/node": "16.x",
-		"@types/vscode": "^1.70.0",
-		"@vscode/test-electron": "^2.1.5",
-		"@vscode/vsce": "^2.24.0",
-		"eslint": "^8.18.0",
-		"glob": "^8.0.3",
-		"mocha": "^10.0.0",
-		"typescript": "^4.7.4"
-	},
-	"dependencies": {
-		"@vscode/codicons": "0.0.32",
-		"axios": "^0.27.2"
-	}
+  "name": "baw-app-support",
+  "displayName": "baw_app_support",
+  "publisher": "vivekopd",
+  "repository": {
+    "url": "https://github.com/vivekg13186/vs-code-plugin-for-IBM-BAW.git"
+  },
+  "icon": "media/hippo-solid.png",
+  "description": "Plugin to view,compare and manage BAW applications,snapshots,configuration",
+  "version": "0.0.2",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "baw.app.support.view.config",
+        "title": "View configuration",
+        "category": "BAW"
+      },
+      {
+        "command": "baw.app.support.compare.config",
+        "title": "Compare configuration",
+        "category": "BAW"
+      },
+      {
+        "command": "baw.app.support.new.env",
+        "title": "Add new environment",
+        "category": "BAW",
+        "icon": {
+          "light": "media/light/plus.svg",
+          "dark": "media/dark/plus.svg"
+        }
+      },
+      {
+        "command": "baw.app.support.delete.env",
+        "title": "Remove environment",
+        "category": "BAW",
+        "icon": {
+          "light": "media/light/trash.svg",
+          "dark": "media/dark/trash.svg"
+        }
+      },
+      {
+        "command": "baw.app.support.delete.all.env",
+        "title": "Remove all environments",
+        "category": "BAW"
+      },
+      {
+        "command": "baw.app.support.make.default",
+        "title": "Make snapshot default",
+        "category": "BAW"
+      },
+      {
+        "command": "baw.app.support.make.active",
+        "title": "Make snapshot active",
+        "category": "BAW"
+      },
+      {
+        "command": "baw.app.support.deactive",
+        "title": "Deactivate snapshot",
+        "category": "BAW"
+      },
+      {
+        "command": "baw.app.support.archive",
+        "title": "Archive snapshot",
+        "category": "BAW"
+      },
+      {
+        "command": "baw.app.support.view.instance",
+        "title": "View Process Instance Details",
+        "category": "BAW",
+        "icon": {
+          "light": "media/light/search.svg",
+          "dark": "media/dark/search.svg"
+        }
+      },
+      {
+        "command": "baw.app.support.tree.reload",
+        "title": "Refresh",
+        "icon": {
+          "light": "media/light/refresh.svg",
+          "dark": "media/dark/refresh.svg"
+        }
+      },
+      {
+        "command": "baw.app.support.view.orphan",
+        "title": "View orphan snapshots",
+        "category": "BAW"
+      }
+    ],
+    "views": {
+      "baw-explorer": [
+        {
+          "id": "appsexplorer",
+          "name": "Apps Explorer",
+          "icon": "media/hippo.svg",
+          "contextualTitle": "BAW Environments"
+        },
+        {
+          "id": "orphantkexplorer",
+          "name": "Orphaned Tookits",
+          "icon": "media/hippo.svg",
+          "contextualTitle": "BAW Environments"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "baw-explorer",
+          "icon": "media/dark/hippo.svg",
+          "title": "BAW Explorer"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "baw.app.support.new.env",
+          "when": "view == appsexplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "baw.app.support.view.instance",
+          "when": "view == appsexplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "baw.app.support.delete.env",
+          "when": "view == appsexplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "baw.app.support.tree.reload",
+          "when": "view == appsexplorer",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "baw.app.support.view.orphan",
+          "when": "view == appsexplorer && viewItem == app"
+        },
+        {
+          "command": "baw.app.support.view.config",
+          "when": "view == appsexplorer && viewItem == snapshot"
+        },
+        {
+          "command": "baw.app.support.compare.config",
+          "when": "view == appsexplorer && viewItem == snapshot && listDoubleSelection"
+        },
+        {
+          "command": "baw.app.support.make.default",
+          "when": "view == appsexplorer && viewItem == snapshot"
+        },
+        {
+          "command": "baw.app.support.make.active",
+          "when": "view == appsexplorer && viewItem == snapshot"
+        },
+        {
+          "command": "baw.app.support.archive",
+          "when": "view == appsexplorer && viewItem == snapshot"
+        },
+        {
+          "command": "baw.app.support.deactive",
+          "when": "view == appsexplorer && viewItem == snapshot"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.70.0",
+    "@vscode/test-electron": "^2.1.5",
+    "@vscode/vsce": "^2.24.0",
+    "eslint": "^8.18.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@vscode/codicons": "0.0.32",
+    "axios": "^0.27.2"
+  }
 }
