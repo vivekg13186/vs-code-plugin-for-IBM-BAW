@@ -1,1 +1,1 @@
-vsce package
+npx @vscode/vsce  package
