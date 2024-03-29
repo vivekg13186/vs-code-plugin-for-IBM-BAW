@@ -100,13 +100,13 @@
 				{
 					"id": "appsexplorer",
 					"name": "Apps Explorer",
-					"icon": "media/vm.svg",
+					"icon": "media/hippo.svg",
 					"contextualTitle": "BAW Environments"
 				},
 				{
 					"id": "orphantkexplorer",
 					"name": "Orphaned Tookits",
-					"icon": "media/vm.svg",
+					"icon": "media/hippo.svg",
 					"contextualTitle": "BAW Environments"
 				}
 			]
@@ -115,7 +115,7 @@
 			"activitybar": [
 				{
 					"id": "baw-explorer",
-					"icon": "media/dark/bpm.svg",
+					"icon": "media/dark/hippo.svg",
 					"title": "BAW Explorer"
 				}
 			]
