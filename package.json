@@ -1,6 +1,10 @@
 {
 	"name": "baw-app-support",
 	"displayName": "baw_app_support",
+	"publisher": "vivekopd",
+	"repository": {
+		"url": "https://github.com/vivekg13186/vs-code-plugin-for-IBM-BAW.git"
+	},
 	"description": "Plugin to view,compare and manage BAW applications,snapshots,configuration",
 	"version": "0.0.1",
 	"engines": {
