@@ -1,6 +1,6 @@
 {
   "name": "baw-app-support",
-  "displayName": "baw_app_support",
+  "displayName": "Hippo BPM",
   "publisher": "vivekopd",
   "repository": {
     "url": "https://github.com/vivekg13186/vs-code-plugin-for-IBM-BAW.git"
