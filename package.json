@@ -7,7 +7,7 @@
   },
   "icon": "media/hippo-solid.png",
   "description": "Plugin to view,compare and manage BAW applications,snapshots,configuration",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.70.0"
   },
