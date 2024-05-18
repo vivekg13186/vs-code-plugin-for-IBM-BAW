@@ -3,19 +3,23 @@ const view_panel = require("./view_panel");
 const compare_panel =require("./compare_panel");
 const view_instance = require("./view_instance");
 const { BAWTreeProvider } = require('./app_explorer_tree');
+const {TestCaseTreeProvider} = require("./testController");
 const { registerAddNewConnection, registerDeleteConnection, registerDeleteAllConnections } = require('./connections');
 const { registerMakeDefault, registerMakeVersionActive, registerMakeVersionArchive, registerMakeVersionDeActivate, registerMakeVersionRestore } = require('./snapshot');
 const { registerViewOrphanTask, OrphanTreeProvider } = require('./orphan_command');
+const { setDatabase } = require('./docs');
 
 
 
 var treeProvider;
 var orphanTreeProvider ;
-function activate (context) {
+var testcaseTreeProvider;
+async function activate (context) {
+	await setDatabase(context)
 	
 	treeProvider = new BAWTreeProvider(context);
 	orphanTreeProvider = new OrphanTreeProvider(context);
-	
+	testcaseTreeProvider = new TestCaseTreeProvider(context);
 	context.subscriptions.push(vscode.window.createTreeView('appsexplorer',{
 		canSelectMany:true,
 		showCollapseAll:true,
@@ -27,6 +31,12 @@ function activate (context) {
 		canSelectMany: true,
 		showCollapseAll: true,
 		treeDataProvider: orphanTreeProvider
+	}));
+
+	context.subscriptions.push(vscode.window.createTreeView('testexplorer', {
+		canSelectMany: true,
+		showCollapseAll: true,
+		treeDataProvider: testcaseTreeProvider
 	}));
 
 	view_panel.register("baw.app.support.view.config",context);

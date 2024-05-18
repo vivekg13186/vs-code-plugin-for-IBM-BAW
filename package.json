@@ -7,7 +7,7 @@
   },
   "icon": "media/hippo-solid.png",
   "description": "Plugin to view,compare and manage BAW applications,snapshots,configuration",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.70.0"
   },
@@ -19,6 +19,7 @@
   ],
   "main": "./extension.js",
   "contributes": {
+   
     "commands": [
       {
         "command": "baw.app.support.view.config",
@@ -109,6 +110,12 @@
           "name": "Orphaned Tookits",
           "icon": "media/hippo.svg",
           "contextualTitle": "BAW Environments"
+        },
+        {
+          "id": "testexplorer",
+          "name": "Test Scripts",
+          "icon": "media/hippo.svg",
+          "contextualTitle": "Test Scripts"
         }
       ]
     },
@@ -195,6 +202,7 @@
   },
   "dependencies": {
     "@vscode/codicons": "0.0.32",
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "level": "^8.0.1"
   }
 }
