@@ -1,2 +1,0 @@
-* orphan
-* view instance input
