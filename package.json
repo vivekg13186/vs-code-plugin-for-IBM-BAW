@@ -92,10 +92,43 @@
         }
       },
       {
+        "command": "baw.app.test.tree.reload",
+        "title": "Refresh",
+        "icon": {
+          "light": "media/light/refresh.svg",
+          "dark": "media/dark/refresh.svg"
+        }
+      },
+      {
+        "command": "baw.app.test.new.testcase",
+        "title": "Add new testcase",
+        "category": "BAW",
+        "icon": {
+          "light": "media/light/plus.svg",
+          "dark": "media/dark/plus.svg"
+        }
+      },{
+        "command": "baw.app.test.delete.testcase",
+        "title": "Remove testcase",
+        "category": "BAW",
+        "icon": {
+          "light": "media/light/trash.svg",
+          "dark": "media/dark/trash.svg"
+        }
+      },{
+        "command": "baw.app.test.edit.testcase",
+        "title": "Edit testcase",
+        "category": "BAW",
+        "icon": {
+          "light": "media/light/edit.svg",
+          "dark": "media/dark/edit.svg"
+        }
+      },
+      {
         "command": "baw.app.support.view.orphan",
         "title": "View orphan snapshots",
         "category": "BAW"
-      }
+      } 
     ],
     "views": {
       "baw-explorer": [
@@ -149,7 +182,18 @@
           "command": "baw.app.support.tree.reload",
           "when": "view == appsexplorer",
           "group": "navigation"
-        }
+        }, 
+        {
+          "command": "baw.app.test.new.testcase",
+          "when": "view == testexplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "baw.app.test.tree.reload",
+          "when": "view == testexplorer",
+          "group": "navigation"
+        } 
+       
       ],
       "view/item/context": [
         {
@@ -179,6 +223,15 @@
         {
           "command": "baw.app.support.deactive",
           "when": "view == appsexplorer && viewItem == snapshot"
+        },
+        {
+					"command": "baw.app.test.delete.testcase",
+					"when": "view == testexplorer && viewItem == testcase"
+				},
+        {
+          "command": "baw.app.test.edit.testcase",
+					"when": "view == testexplorer && viewItem == testcase"
+          
         }
       ]
     }

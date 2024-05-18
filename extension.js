@@ -3,7 +3,8 @@ const view_panel = require("./view_panel");
 const compare_panel =require("./compare_panel");
 const view_instance = require("./view_instance");
 const { BAWTreeProvider } = require('./app_explorer_tree');
-const {TestCaseTreeProvider} = require("./testController");
+const {TestCaseTreeProvider,registerAddNewTestCase,registerDeleteTestCase} = require("./testController");
+const {registereEditTestCase} = require("./view_service_runner");
 const { registerAddNewConnection, registerDeleteConnection, registerDeleteAllConnections } = require('./connections');
 const { registerMakeDefault, registerMakeVersionActive, registerMakeVersionArchive, registerMakeVersionDeActivate, registerMakeVersionRestore } = require('./snapshot');
 const { registerViewOrphanTask, OrphanTreeProvider } = require('./orphan_command');
@@ -55,7 +56,18 @@ async function activate (context) {
 	var plugin = vscode.commands.registerCommand("baw.app.support.tree.reload", async function (data) {
 		treeProvider.refresh();
 	});
+
+	//test case setup
+	registerAddNewTestCase("baw.app.test.new.testcase",context,testcaseTreeProvider);
+	registerDeleteTestCase("baw.app.test.delete.testcase",context,testcaseTreeProvider);
+	registereEditTestCase("baw.app.test.edit.testcase",context,testcaseTreeProvider);
 	context.subscriptions.push(plugin);
+	plugin = vscode.commands.registerCommand("baw.app.test.tree.reload", async function (data) {
+		testcaseTreeProvider.refresh();
+	});
+	context.subscriptions.push(plugin);
+	
+	
 }
 
 function deactivate () { }

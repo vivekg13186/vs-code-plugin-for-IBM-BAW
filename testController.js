@@ -1,6 +1,6 @@
 const vscode = require("vscode");
 
-const {getKeys} = require("./docs");
+const {getKeys,putDoc,deleteDoc} = require("./docs");
 const {new_id} = require("./utils");
 
 
@@ -23,6 +23,9 @@ class TestCaseTreeProvider{
         this._onDidChangeTreeData = new vscode.EventEmitter();
         this.onDidChangeTreeData = this._onDidChangeTreeData.event;
         this.testCases = [];
+    }
+    getSelection(){
+        return "";
     }
     getTreeItem (element) {
         return element;
@@ -48,3 +51,35 @@ class TestCaseTreeProvider{
 }
 
 exports.TestCaseTreeProvider = TestCaseTreeProvider;
+
+exports.registerAddNewTestCase=function (id,context,tree){
+    var plugin = vscode.commands.registerCommand(id, async function () {
+
+        var name = await vscode.window.showInputBox({ placeHolder: "test case name", title: "Test case name" });
+        
+        
+        if (!name) {
+            vscode.window.showErrorMessage("Enter name");
+            return
+        }
+        await putDoc(name,"{}") 
+        vscode.window.showInformationMessage(`${name} added`);
+        tree.refresh();
+    });
+    context.subscriptions.push(plugin);
+}
+
+exports.registerDeleteTestCase = function   (id, context, treeDataProvider) {
+    var plugin = vscode.commands.registerCommand(id, async function (item) {
+        var name  = item.label;
+        await deleteDoc(name);
+        vscode.window.showInformationMessage(`${name} removed`);
+        treeDataProvider.refresh();
+    });
+    context.subscriptions.push(plugin);
+
+}
+ 
+ 
+ 
+ 

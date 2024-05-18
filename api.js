@@ -122,6 +122,28 @@ async function getEPVs (host, username, password, containerId, versionId) {
 }
 exports.getEPVs = getEPVs;
 
+
+exports.startService = async function startService(host ,username,password,appname,service,input){
+    try {
+        var res = await axios({
+            method: "post",
+            url: `/rest/bpm/wle/v1/service/${appname}@${service}`,
+            baseURL: host,
+            auth: { username, password },
+            params:{
+                action :"start",
+                params : input,
+                parst :"all"
+            }
+            
+        });
+         
+        return { status:  res.status ,statusText : res.statusText ,data : res.data ,headers : res.headers};
+    } catch (e) {
+        return {status : 10 ,statusText : "Code error" ,data :{ error: String(e)} ,headers : {}};
+    }
+}
+
 async function getOrphanedToolkits(host, username, password,containerId) {
     try {
         var res = await axios({
@@ -221,6 +243,7 @@ async function genericVersionAction (host, username, password, containerId, vers
         
     }
 }
+
 
  
 exports.makeVersionDefault = async function  (host, username, password, containerId, versionId) {

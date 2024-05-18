@@ -1,44 +1,46 @@
-const level  = require("level");
-  
-const os = require('os');
-var path = require('path');
+const level = require("level");
 
-console.log(path.join(os.homedir(),"baw_test"));
+const os = require("os");
+var path = require("path");
 
-var  db  = null;
+console.log(path.join(os.homedir(), "baw_test"));
 
-  async function setDatabase(context){
- 
-    db =new level.Level(path.join(os.homedir(),"baw_test"),{ valueEncoding: 'json' })
-    await  db.put("dedfausdkjf",'{"hrllo" : "asdasd"}')
+var db = null;
+
+async function setDatabase(context) {
+  db = new level.Level(path.join(os.homedir(), "baw_test"), {
+    valueEncoding: "json",
+  });
+  await db.put("dedfausdkjf", '{"hrllo" : "asdasd"}');
 }
 
+function putDoc(key, data) {
+  if (db) {
+    db.put(key, JSON.stringify(data));
+  }
+}
 
-  function putDoc(key,data)
-{
-    if(db){
-        db.put(key,JSON.stringify(data));
+exports.getDoc = async function getDoc(key) {
+  if (db) {
+    var data = await db.get(key);
+    if (data) return JSON.parse(data);
+  }
+  return undefined;
+};
+
+async function getKeys() {
+  var result = [];
+  if (db) {
+    for await (const key of db.keys()) {
+      result.push(key);
     }
+  }
+  return result;
 }
 
-  async function getDoc(key){
-    if(db){
-        var data  = await db.get(key);
-        if(data) return JSON.parse(data);
-    }
-    return undefined;
-}
-
-async function getKeys(){
-    var result=[];
-    if(db){
-        
-        for await (const key of db.keys()) {
-            result.push(key);
-          }
-    }
-    return result;
-}
-
-exports.getKeys=  getKeys;
+exports.deleteDoc = async function (name) {
+  await db.del(name);
+};
+exports.getKeys = getKeys;
 exports.setDatabase = setDatabase;
+exports.putDoc = putDoc;

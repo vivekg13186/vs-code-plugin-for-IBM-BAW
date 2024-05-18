@@ -10,7 +10,8 @@ export default defineConfig({
       input: {
         "view": "./src/view_app_main.js",
         "compare": "./src/compare_app_main.js",
-        "instance":"/src/view_instance_main.js"
+        "instance":"/src/view_instance_main.js",
+        "servicerunner":"/src/service_runner_main.js"
       },
       output: {
         dir: "../media/",
