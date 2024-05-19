@@ -11,7 +11,7 @@ async function setDatabase(context) {
   db = new level.Level(path.join(os.homedir(), "baw_test"), {
     valueEncoding: "json",
   });
-  await db.put("dedfausdkjf", '{"hrllo" : "asdasd"}');
+ // await db.put("dedfausdkjf", '{"hrllo" : "asdasd"}');
 }
 
 function putDoc(key, data) {

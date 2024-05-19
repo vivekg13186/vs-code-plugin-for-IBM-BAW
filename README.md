@@ -27,3 +27,7 @@ Gain insights into process instance details and conveniently view multiple proce
 ### Bulk Actions:
 
 Perform bulk actions like snapshot archive,deactivate,delete etc..
+
+### Test Script
+
+Create unit test to test services using REST API
