@@ -1,3 +1,10 @@
+> ⚠️ **Warning**
+>
+> A new desktop version of this app is now available here:  
+> https://github.com/vivekg13186/hippo-bpm  
+>
+> This project will no longer receive updates.
+
 # Visual Studio Code Plugin for IBM BAW
 
 This Visual Studio Code (VSCode) plugin streamlines the management of IBM Business Automation Workflow (BAW) environments, catering to the needs of development teams, DevOps teams, and production support teams. With this plugin, users can seamlessly handle various BAW tasks directly from within VSCode, eliminating the need to switch between multiple URLs.
