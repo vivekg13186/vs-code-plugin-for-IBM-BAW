@@ -1,7 +1,7 @@
 > ⚠️ **Warning**
 >
 > A new desktop version of this app is now available here:  
-> https://github.com/vivekg13186/hippo-bpm  
+> [https://github.com/vivekg13186/hippo-bpm ](https://github.com/vivekg13186/hippo-bpm-web) 
 >
 > This project will no longer receive updates.
 
